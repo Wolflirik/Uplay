@@ -1,0 +1,77 @@
+.track-widget {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: $space-lg;
+  border-radius: $space-xxs;
+
+  &:after {
+    position: absolute;
+    top: calc(100% + $space-lg / 2);
+    left: ($space-xl * 2) + $space-md;
+    right:0;
+    height: 1px;
+    background-color: $color-semi-dark-blue;
+  }
+
+  &:not(:last-child):after {
+    content: "";
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-inline: $space-md;
+    padding-block:$space-xxs;
+    overflow: hidden;
+
+    &-icon {
+      flex-shrink: 0;
+      margin-right: $space-xs;
+      color: $color-light-blue;
+    }
+
+    &-text {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    @media screen and (max-width: 1239px) {
+      display: none;
+    }
+  }
+
+  &__info {
+    min-width: $space-xxl * 4;
+    width: 100%;
+  }
+
+  &__album {
+    width:60%;
+  }
+
+  &__genre {
+    width: 30%;
+  }
+
+  &__duration {
+    width: $space-xxl * 8;
+  }
+
+  &__menu {
+    position: relative;
+
+    @media screen and (min-width: 720px) {
+      margin-left:$space-xl;
+    }
+
+    @media screen and (max-width: 719px) {
+      margin-left:$space-md;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: $space-lg;
+  }
+}

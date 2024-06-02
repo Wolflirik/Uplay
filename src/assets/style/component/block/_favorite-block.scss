@@ -1,0 +1,23 @@
+.favorite {
+  &--status {
+    &_in {
+      color: $color-favorite;
+
+      &:hover {
+        @media(pointer: fine) {
+          color: lighten($color-favorite, 12%);
+        }
+      }
+    }
+
+    &_out {
+      color: $color-accent;
+
+      &:hover {
+        @media(pointer: fine) {
+          color: $color-light;
+        }
+      }
+    }
+  }
+}

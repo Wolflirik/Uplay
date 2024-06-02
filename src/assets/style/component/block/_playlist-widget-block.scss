@@ -1,0 +1,82 @@
+.playlist-widget {
+  &--status_in-grid {
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (min-width: 720px) {
+      padding:$space-xl;
+    }
+
+    @media screen and (max-width: 719px) {
+      padding:$space-md;
+    }
+  }
+
+  &__emoji {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    width: 100%;
+    font-size: 10em;
+
+    @media screen and (min-width: 720px) {
+      margin-bottom:$space-lg;
+    }
+
+    @media screen and (max-width: 719px) {
+      margin-bottom:$space-md - $space-xs;
+    }
+
+    &-back-blurred {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-size: 15em;
+
+      position: absolute;
+      inset: 0;
+      filter: blur($space-xxl * 4);
+      //perfomance хром и другие на webkit
+      backface-visibility: hidden;
+    }
+  }
+
+  &__name{
+    color:$color-light;
+    font-weight: 500;
+  }
+
+  &__info {
+    padding-block: $space-xs $space-xs;
+    margin-bottom: $space-xxs;
+    border-bottom: 1px solid transparentize($color-light, 0.9);
+
+    @media screen and (min-width: 720px) {
+      font-size: 0.8em;
+    }
+
+    @media screen and (max-width: 719px) {
+      font-size: 0.9em;
+    }
+  }
+
+  &__name, &__info, &__artist{
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  &__artist {
+    @media screen and (min-width: 720px) {
+      font-size: 0.9em;
+    }
+
+    @media screen and (max-width: 719px) {
+      font-size: 0.8em;
+    }
+  }
+}

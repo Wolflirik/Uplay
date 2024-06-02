@@ -1,0 +1,19 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  row-gap: $space-md;
+  overflow-y: auto;
+  background-color: $color-dark-blue;
+
+  @media screen and (min-width: 720px) {
+    padding-block: $space-xl;
+
+    &::-webkit-scrollbar{
+      width: 0;
+    }
+  }
+
+  @media screen and (max-width: 719px) {
+    height:100%
+  }
+}

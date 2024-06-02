@@ -1,0 +1,59 @@
+.ga-info {
+  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  flex-shrink: 0;
+
+  &__image {
+    position: relative;
+    z-index: 20;
+
+    @media screen and (min-width: 720px) {
+      margin-block: $space-xl;
+    }
+
+    @media screen and (max-width: 719px) {
+      margin-block: $space-md;
+      width: clamp(240px, 60%, 100%);
+      margin-inline: auto;
+    }
+  }
+
+  &__description {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding-bottom: $space-md;
+
+    &-item {
+      display: inline-flex;
+      justify-content: space-between;
+      width: clamp($space-xxl * 10, $space-xxl * 15, 100%);
+
+      &-value {
+        color: $color-light;
+        font-weight: 500;
+      }
+    }
+
+    @media screen and (min-width: 720px) {
+      padding-left: $space-xl;
+      row-gap: $space-md;
+    }
+
+    @media screen and (max-width: 719px) {
+      row-gap: $space-sm;
+    }
+  }
+
+  &__name {
+    display: block;
+    margin-bottom: $space-md;
+    color: $color-light;
+    font-size: 2em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

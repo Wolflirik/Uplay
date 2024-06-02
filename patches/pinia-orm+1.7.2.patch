@@ -1,0 +1,26 @@
+diff --git a/node_modules/pinia-orm/dist/index.cjs b/node_modules/pinia-orm/dist/index.cjs
+index f64037a..3f4e5ce 100644
+--- a/node_modules/pinia-orm/dist/index.cjs
++++ b/node_modules/pinia-orm/dist/index.cjs
+@@ -3406,7 +3406,7 @@ class Model {
+     if (Utils.isArray(value)) {
+       return this.serializeArray(value);
+     }
+-    if (typeof value === "object") {
++    if (typeof value === "object" && !(value instanceof ArrayBuffer || value instanceof File || value instanceof Blob || (typeof window.FileSystemFileHandle !== 'undefined' && value instanceof FileSystemFileHandle))) {
+       if (value instanceof Date && !isNaN(value.getTime()) && typeof value.toISOString === "function") {
+         return value.toISOString();
+       } else {
+diff --git a/node_modules/pinia-orm/dist/index.mjs b/node_modules/pinia-orm/dist/index.mjs
+index 08f8584..fd4109f 100644
+--- a/node_modules/pinia-orm/dist/index.mjs
++++ b/node_modules/pinia-orm/dist/index.mjs
+@@ -3404,7 +3404,7 @@ class Model {
+     if (isArray(value)) {
+       return this.serializeArray(value);
+     }
+-    if (typeof value === "object") {
++    if (typeof value === "object" && !(value instanceof ArrayBuffer || value instanceof File || value instanceof Blob || (typeof window.FileSystemFileHandle !== 'undefined' && value instanceof FileSystemFileHandle))) {
+       if (value instanceof Date && !isNaN(value.getTime()) && typeof value.toISOString === "function") {
+         return value.toISOString();
+       } else {

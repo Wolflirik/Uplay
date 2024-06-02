@@ -1,0 +1,118 @@
+.album-info {
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+
+  &__image {
+    position: relative;
+    z-index: 20;
+
+    @media screen and (min-width: 720px) {
+      margin-block:$space-xl;
+    }
+
+    @media screen and (max-width: 719px) {
+      margin-block:$space-md;
+      width: clamp(240px, 60%, 100%);
+      margin-inline: auto;
+    }
+
+    &-back-blurred {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      filter: blur($space-xxl * 10);
+      backface-visibility: hidden;
+      transform: translate3d(0,0,0);
+      transform: translateZ(0);
+    }
+  }
+
+  &__description {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+
+    &-item {
+      display: inline-flex;
+      justify-content: space-between;
+      width: clamp($space-xxl * 10, $space-xxl * 15, 100%);
+
+      &-value {
+        color: $color-light;
+        font-weight: 500;
+      }
+    }
+
+    @media screen and (min-width: 720px) {
+      padding-left: $space-xl;
+      row-gap: $space-md;
+    }
+
+    @media screen and (max-width: 719px) {
+      row-gap: $space-sm;
+    }
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: $space-md;
+    color: $color-light;
+    font-size: 2em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__artist {
+    position: relative;
+    margin-top: $space-md;
+    height:$space-xxl * 2 + $space-md;
+
+    &-title {
+      font-size: 1.2em;
+      color: $color-light;
+      font-weight: 500;
+      margin-bottom: $space-xxs;
+    }
+
+    &-list {
+      position: absolute;
+      overflow-x: auto;
+      overflow-y: hidden;
+      display: flex;
+
+      &::-webkit-scrollbar {
+        display: none;
+        height: 0;
+      }
+
+      @media screen and (min-width: 720px) {
+        left: -1 * $space-xl;
+        right: -1 * $space-xl;
+      }
+
+      @media screen and (max-width: 719px) {
+        left: -1 * $space-md;
+        right: -1 * $space-md;
+      }
+
+      &-inner {
+        flex-shrink: 0;
+        padding-block: $space-md;
+
+        @media screen and (min-width: 720px) {
+          padding-inline: $space-xl;
+        }
+
+        @media screen and (max-width: 719px) {
+          padding-inline: $space-md;
+        }
+      }
+    }
+  }
+}

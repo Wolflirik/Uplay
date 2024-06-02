@@ -1,0 +1,54 @@
+.module {
+  margin-top: $space-lg;
+  margin-bottom: $space-xl;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-lg;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 1.3em;
+    color:$color-light;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__arrow-navigation {
+    display: flex;
+  }
+
+  &__scroll {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    width: 100%;
+
+    & > * {
+      scroll-snap-align: start;
+    }
+
+
+    &::-webkit-scrollbar {
+      display: none;
+      height: 0;
+    }
+
+    @media screen and (min-width: 720px) {
+      column-gap: $space-xl;
+      scroll-padding-inline: $space-xl;
+    }
+
+    @media screen and (max-width: 719px) {
+      column-gap: $space-md;
+      scroll-padding-inline: $space-md;
+    }
+  }
+}

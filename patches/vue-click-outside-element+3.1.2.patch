@@ -1,0 +1,30 @@
+diff --git a/node_modules/vue-click-outside-element/dist/vue-click-outside-element.mjs b/node_modules/vue-click-outside-element/dist/vue-click-outside-element.mjs
+index 25dec83..6b1c2d7 100644
+--- a/node_modules/vue-click-outside-element/dist/vue-click-outside-element.mjs
++++ b/node_modules/vue-click-outside-element/dist/vue-click-outside-element.mjs
+@@ -8,14 +8,14 @@ function clickOutside(bind) {
+   };
+ }
+ const directive = {
+-  beforeMount(element, bind, vn) {
++  mounted(element, bind, vn) {
+     var _a;
+     const isDirectiveValueFunction = ((_a = bind == null ? void 0 : bind.value) == null ? void 0 : _a.constructor.name) === "Function";
+     if (!isDirectiveValueFunction) {
+       throw Error("[v-click-outside-element] Function should be provided in the directive");
+     }
+     element.clickOutside = clickOutside.bind(element)(bind);
+-    window.addEventListener("click", element.clickOutside);
++    setTimeout(() => window.addEventListener("click", element.clickOutside), 200);
+   },
+   beforeUnmount(element) {
+     window.removeEventListener("click", element.clickOutside);
+diff --git a/node_modules/vue-click-outside-element/dist/vue-click-outside-element.umd.js b/node_modules/vue-click-outside-element/dist/vue-click-outside-element.umd.js
+index fd4afba..3ddba5a 100644
+--- a/node_modules/vue-click-outside-element/dist/vue-click-outside-element.umd.js
++++ b/node_modules/vue-click-outside-element/dist/vue-click-outside-element.umd.js
+@@ -1 +1 @@
+-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self)["vue-click-outside-element"]={})}(this,(function(e){"use strict";function t(e){return t=>{t.target instanceof Element&&(this===t.target||this.contains(t.target)||e.value(t))}}const i={beforeMount(e,i,n){var o;if(!("Function"===(null==(o=null==i?void 0:i.value)?void 0:o.constructor.name)))throw Error("[v-click-outside-element] Function should be provided in the directive");e.clickOutside=t.bind(e)(i),window.addEventListener("click",e.clickOutside)},beforeUnmount(e){window.removeEventListener("click",e.clickOutside)}},n={install(e,t="click-outside-element"){e.directive(t,i)}};e.default=n,e.directive=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+\ No newline at end of file
++!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self)["vue-click-outside-element"]={})}(this,(function(e){"use strict";function t(e){return t=>{t.target instanceof Element&&(this===t.target||this.contains(t.target)||e.value(t))}}const i={beforeMount(e,i,n){var o;if(!("Function"===(null==(o=null==i?void 0:i.value)?void 0:o.constructor.name)))throw Error("[v-click-outside-element] Function should be provided in the directive");e.clickOutside=t.bind(e)(i),setTimeout(() => window.addEventListener("click", e.clickOutside, 500))},beforeUnmount(e){window.removeEventListener("click",e.clickOutside)}},n={install(e,t="click-outside-element"){e.directive(t,i)}};e.default=n,e.directive=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));
+\ No newline at end of file

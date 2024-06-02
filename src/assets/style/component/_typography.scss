@@ -1,0 +1,39 @@
+@mixin fontFace($font-family, $file-path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+    src: url('#{$file-path}.woff2') format('woff2');
+  }
+}
+
+@mixin fontSmooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$def-txt-font-family:'Manrope', sans-serif;
+$def-txt-line-height: 1.2;
+$def-txt-weight: 400;
+$def-letter-spacing: 0.025em;
+
+@include fontFace('Manrope', '../font/manrope-400', 400);
+@include fontFace('Manrope', '../font/manrope-500', 500);
+@include fontFace('Manrope', '../font/manrope-800', 800);
+
+body {
+  font-family: $def-txt-font-family;
+  line-height: $def-txt-line-height;
+  font-weight: $def-txt-weight;
+  letter-spacing: $def-letter-spacing;
+
+  @media screen and (min-width: 720px) {
+    font-size: 1em;
+  }
+
+  @media screen and (max-width: 719px) {
+    font-size: 0.9em;
+  }
+}
+

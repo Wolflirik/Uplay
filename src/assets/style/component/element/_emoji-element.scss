@@ -1,0 +1,32 @@
+.emoji {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  overflow-x: auto;
+  font-size:1.6em;
+  column-gap: $space-sm;
+  padding-inline: $space-md + $space-sm $space-md;
+  background-color:transparentize($color-light, 0.8);
+  border-top-right-radius: $space-md;
+  border-bottom-right-radius: $space-md;
+  margin-left:-1 * $space-md;
+  transition: background-color .1s ease-in-out;
+
+  @media screen and (min-width: 720px) {
+    max-width: 300px;
+  }
+
+  @media screen and (max-width: 719px) {
+    max-width: 100%;
+  }
+
+  &::-webkit-scrollbar{
+    display: none;
+    width: 0;
+  }
+
+  &+.form-group__input {
+    text-indent: 0;
+    text-align: center;
+  }
+}

@@ -1,0 +1,17 @@
+.small-playlist-list {
+  margin-top:$space-xl;
+  margin-bottom: 0;
+
+  &__title {
+    font-size:14px;
+    color: $color-semi-light-blue;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: $space-sm;
+  }
+}

@@ -1,0 +1,193 @@
+.dropdown {
+  z-index: 100;
+  backface-visibility: hidden;
+
+  &__back {
+    position: absolute;
+    inset:0;
+    z-index: 10;
+    background-color: transparentize($color-dark-blue, 0.1);
+    backdrop-filter: blur($space-md);
+
+    @media screen and (min-width: 720px) {
+      display: none;
+    }
+  }
+
+  &__main {
+    pointer-events: none;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+
+    &::-webkit-scrollbar{
+      display: none;
+      width: 0;
+    }
+
+    @media screen and (max-width: 719px) {
+      position: absolute;
+      z-index: 20;
+      padding-inline:$space-md;
+      inset: 0;
+      overflow-y:auto;
+    }
+  }
+
+  &__inner {
+    @media screen and (max-width: 719px) {
+      padding-block:$space-xxl * 4 $space-md;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+  }
+
+  &__content {
+    pointer-events: auto;
+
+    &-item {
+      padding:$space-sm $space-md;
+      border-radius: $space-xxl;
+      background-color: $color-semi-dark-blue;
+
+      &:not(:last-child) {
+        margin-bottom: $space-md;
+      }
+    }
+
+    @media screen and (min-width: 720px) {
+      min-width: $space-xxl * 8;
+    }
+
+    @media screen and (max-width: 719px) {
+      margin-top:auto;
+    }
+  }
+
+  &__title {
+    padding: $space-md $space-sm;
+    display: flex;
+    align-items: center;
+    column-gap: $space-sm;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    color: $color-light;
+
+  }
+
+  &__footer {
+    background-color: $color-semi-dark-blue;
+    margin-top:$space-xl;
+    border-radius: $space-xxl;
+    pointer-events: auto;
+
+    &-button {
+      width: 100%;
+      justify-content: center;
+      padding:$space-lg;
+      border-radius: $space-xxl;
+    }
+
+    @media screen and (min-width: 720px) {
+      display:none;
+    }
+  }
+
+  &--animation {
+    &_active, &_leave {
+      @media screen and (min-width: 720px) {
+        backface-visibility: hidden;
+        transition: clip-path .2s linear;
+      }
+
+      .dropdown__back {
+        @media screen and (max-width: 719px) {
+          transition: background-color .1s linear, backdrop-filter .1s linear;
+        }
+      }
+    }
+
+    &_active {
+      z-index: 110;
+      pointer-events: none;
+
+      @media screen and (max-width: 719px) {
+        transition: fake .1s;
+      }
+
+      .dropdown__main {
+        @media screen and (max-width: 719px) {
+          backface-visibility: hidden;
+          transition: transform .1s linear, opacity .1s linear;
+        }
+      }
+    }
+
+    &_leave {
+      pointer-events: auto;
+
+      @media screen and (max-width: 719px) {
+        transition: fake .2s;
+      }
+
+      .dropdown__main {
+        @media screen and (max-width: 719px) {
+          backface-visibility: hidden;
+          transition: transform .2s linear, opacity .1s linear;
+        }
+      }
+    }
+
+    &_active-from, &_leave-to {
+      @media screen and (min-width: 720px) {
+        clip-path: circle(0% at calc(100% - 0.5em) 0.5em);
+      }
+
+      .dropdown__back {
+        @media screen and (max-width: 719px) {
+          background-color: transparent;
+          backdrop-filter: blur(0px);
+        }
+      }
+
+      .dropdown__main {
+        @media screen and (max-width: 719px) {
+          opacity:0;
+          transform: translateY(20%);
+        }
+      }
+    }
+
+    &_leave-from, &_active-to {
+      @media screen and (min-width: 720px) {
+        clip-path: circle(150% at 100% 0);
+      }
+
+      .dropdown__back {
+        @media screen and (max-width: 719px) {
+          background-color: transparentize($color-dark-blue, 0.1);
+          backdrop-filter: blur($space-md);
+        }
+      }
+
+      .dropdown__main {
+        @media screen and (max-width: 719px) {
+          opacity:1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 720px) {
+    position: var(--positioning);
+    top:var(--position-abscissa);
+    right:var(--position-ordinate-inverted);
+  }
+
+  @media screen and (max-width: 719px) {
+    position: fixed;
+    inset: 0;
+    overflow-y:auto;
+  }
+}

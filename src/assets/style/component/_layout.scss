@@ -1,0 +1,94 @@
+.layout {
+  display:grid;
+  grid-template-columns: $space-xxl * 2 + $space-sm + 1px $space-xxl * 6 - $space-sm + 1px 1fr;
+  grid-template-rows: $space-xl * 2 1fr $space-xl * 2 $space-md $space-xl * 2;
+  height:calc((var(--vh-unit, 1vh) * 100) + env(safe-area-inset-top, 0));//100dvh;//calc(var(--vh-unit, 1vh));
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  padding-top: env(safe-area-inset-top, 0);
+  padding-left: env(safe-area-inset-left, 0);
+  padding-right: env(safe-area-inset-right, 0);
+
+  &__logo {
+    grid-area: l;
+  }
+
+  &__header {
+    grid-area: h;
+  }
+
+  &__sidebar {
+    grid-area: s;
+  }
+
+  &__content {
+    grid-area: c;
+  }
+
+  &__player {
+    grid-area: p;
+  }
+
+  &--name{
+    &_default {
+      @media screen and (min-width: 1240px) {
+        grid-template-areas:
+          "l l h"
+          "s s c"
+          "s s c"
+          "s s p"
+          "s s p";
+      }
+
+      @media screen and (max-width: 1239px) and (min-width: 720px) {
+        grid-template-areas:
+          "l h h"
+          "s c c"
+          "s c c"
+          "s p p"
+          "s p p";
+      }
+    }
+
+    &_default-mobile {
+      @media screen and (max-width: 719px) {
+        grid-template-areas:
+          "h h h"
+          "c c c"
+          "p p p"
+          "p p p"
+          "s s s";
+      }
+    }
+
+    &_main {
+      @media screen and (min-width: 1240px) {
+        grid-template-areas:
+          "l l c"
+          "s s c"
+          "s s c"
+          "s s p"
+          "s s p";
+      }
+
+      @media screen and (max-width: 1239px) and (min-width: 720px) {
+        grid-template-areas:
+          "l c c"
+          "s c c"
+          "s c c"
+          "s p p"
+          "s p p";
+      }
+    }
+
+    &_main-mobile {
+      @media screen and (max-width: 719px) {
+        grid-template-areas:
+          "c c c"
+          "c c c"
+          "p p p"
+          "p p p"
+          "s s s";
+      }
+    }
+  }
+}

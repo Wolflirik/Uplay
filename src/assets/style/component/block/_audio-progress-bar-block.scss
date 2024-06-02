@@ -1,0 +1,54 @@
+.audio-progress-bar {
+  display: flex;
+  align-items: center;
+  height: $space-lg * 2;
+  width: 100%;
+  container-type: inline-size;
+
+  @container (max-width: 400px) {
+    .audio-progress-bar {
+      &__background *:nth-child(3n+1), &__overground *:nth-child(3n+1){
+        display: none;
+      }
+    }
+  }
+
+  &__chunk {
+    --size: 10%;
+    background-color: currentColor;
+    height: var(--size);
+    width: 4px;
+    border-radius: 2px;
+    transition: height .1s linear
+  }
+
+
+  &__range {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    opacity: 0;
+    cursor: grab;
+    appearance:none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+
+  &__background, &__overground {
+    position: absolute;
+    inset:0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__background{
+    z-index: 5;
+    color: $color-accent;
+  }
+
+  &__overground{
+    z-index: 10;
+    clip-path: inset(0 0 0 var(--percent-played));
+    color: darken($color-accent, 30%);
+  }
+}

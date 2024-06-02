@@ -1,0 +1,43 @@
+.finder {
+  display: flex;
+
+  @media screen and (min-width: 720px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 719px) {
+    flex-direction: column-reverse;
+  }
+
+  &__result {
+    min-height: 240px;
+    max-height: 240px;
+    overflow-y: auto;
+
+    &-empty {
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    &::-webkit-scrollbar{
+      display: none;
+      width: 0;
+    }
+  }
+
+  &__item {
+    line-height: $space-xxl;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow-x: hidden;
+
+    &:not(:last-child) {
+      margin-bottom: $space-xs
+    }
+  }
+}

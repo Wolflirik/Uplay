@@ -1,0 +1,8 @@
+.back-button {
+  display: flex;
+  align-items: center;
+  position: relative;
+  column-gap: $space-xs;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}

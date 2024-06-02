@@ -1,0 +1,41 @@
+.small-playlist-widget {
+  display: flex;
+  padding-block: $space-sm;
+  align-items: center;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  transition: color .1s linear;
+
+  &:after {
+    display: inline-block;
+    margin-left: auto;
+  }
+
+  &__emoji {
+    display: inline-block;
+    font-size: 18px;
+    width: 1.5em;
+    text-align: center;
+
+    margin-right: $space-md;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    color: $color-light;
+  }
+
+  &--status_active {
+    cursor: default;
+    color: $color-light;
+
+    &:after{
+      content: "•";
+    }
+  }
+}

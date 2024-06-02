@@ -1,0 +1,11 @@
+.content{
+  display: flex;
+  flex-direction: column;
+  background-color: $color-black-blue;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar{
+    display: none;
+    width: 0;
+  }
+}

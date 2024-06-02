@@ -1,0 +1,101 @@
+.button {
+  display: flex;
+  align-items: center;
+  position: relative;
+  column-gap: $space-xs;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  
+
+  &--type {
+    &_default {
+      justify-content: center;
+      background-color: transparent;
+      border: 2px solid $color-accent;
+      border-radius: $space-md;
+      color:$color-light;
+      line-height: $space-xxl + $space-sm;
+      padding-inline: $space-xl;
+      font-weight: 500;
+      transition: border .1s linear;
+
+      &:hover {
+        @media(pointer: fine) {
+          border:2px solid lighten($color-accent, 20%);
+        }
+      }
+    }
+    &_accent {
+      justify-content: center;
+      background-color: $color-accent;
+      border-radius: $space-md;
+      color: $color-dark-blue;
+      line-height: $space-xxl + $space-sm;
+      padding-inline: $space-xl;
+      border:0;
+      font-weight: 500;
+      transition: background-color .1s linear;
+
+      &:hover {
+        @media(pointer: fine) {
+          background-color: lighten($color-accent, 20%);
+        }
+      }
+    }
+    &_link {
+      background-color:transparent;
+      border:0;
+      color:$color-accent;
+      transition: color .1s linear;
+
+      &:hover {
+        @media(pointer: fine) {
+          color: $color-light;
+        }
+      }
+    }
+    &_icon {
+      justify-content: center;
+      background-color: transparent;
+      border:0;
+      color: $color-accent;
+      padding: $space-sm calc($space-sm - 0.25em);
+      transition: color .1s linear;
+
+      &:hover {
+        @media(pointer: fine) {
+          color: $color-light;
+        }
+      }
+    }
+    &_emoji {
+      justify-content: center;
+      flex-shrink: 0;
+      background-color: transparent;
+      opacity: 1;
+      border:0;
+      width: $space-xxl;
+      line-height: $space-xxl;
+      transition: opacity .1s linear;
+
+      &:hover {
+        @media(pointer: fine) {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.form-button {
+  width: 100%;
+}

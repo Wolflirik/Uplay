@@ -1,0 +1,11 @@
+.page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  font-size: 1em;
+  font-weight: 500;
+  pointer-events: none;
+  color: $color-light;
+}

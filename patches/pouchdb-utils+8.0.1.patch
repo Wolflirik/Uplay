@@ -1,0 +1,51 @@
+diff --git a/node_modules/pouchdb-utils/lib/index-browser.es.js b/node_modules/pouchdb-utils/lib/index-browser.es.js
+index 8d569f9..777a75c 100644
+--- a/node_modules/pouchdb-utils/lib/index-browser.es.js
++++ b/node_modules/pouchdb-utils/lib/index-browser.es.js
+@@ -27,6 +27,11 @@ function cloneBinaryObject(object) {
+   if (object instanceof ArrayBuffer) {
+     return cloneArrayBuffer(object);
+   }
++
++  if(object instanceof File) {
++    return object;
++  }
++
+   var size = object.size;
+   var type = object.type;
+   // Blob
+diff --git a/node_modules/pouchdb-utils/lib/index-browser.js b/node_modules/pouchdb-utils/lib/index-browser.js
+index 55903f0..4b5bdf9 100644
+--- a/node_modules/pouchdb-utils/lib/index-browser.js
++++ b/node_modules/pouchdb-utils/lib/index-browser.js
+@@ -13,8 +13,9 @@ var uuid = require('uuid');
+ var pouchdbMd5 = require('pouchdb-md5');
+ 
+ function isBinaryObject(object) {
+-  return (typeof ArrayBuffer !== 'undefined' && object instanceof ArrayBuffer) ||
+-    (typeof Blob !== 'undefined' && object instanceof Blob);
++  const aa = (typeof ArrayBuffer !== 'undefined' && object instanceof ArrayBuffer) ||
++  (typeof Blob !== 'undefined' && object instanceof Blob);
++  return aa;
+ }
+ 
+ function cloneArrayBuffer(buff) {
+@@ -33,6 +34,7 @@ function cloneBinaryObject(object) {
+   if (object instanceof ArrayBuffer) {
+     return cloneArrayBuffer(object);
+   }
++
+   var size = object.size;
+   var type = object.type;
+   // Blob
+@@ -66,6 +68,10 @@ function clone(object) {
+   var i;
+   var len;
+ 
++  if(object instanceof  File) {
++    return object
++  }
++
+   if (!object || typeof object !== 'object') {
+     return object;
+   }

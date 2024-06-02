@@ -1,0 +1,81 @@
+.album-widget {
+  &--status_in-grid {
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (min-width: 720px) {
+      padding:$space-xl;
+    }
+
+    @media screen and (max-width: 719px) {
+      padding:$space-md;
+    }
+  }
+
+  &:not(.album-widget--status_in-grid) {
+    flex-shrink: 0;
+    width: clamp(150px, 30%, 240px);
+
+    .album-widget__image {
+      border-radius: $space-md;
+    }
+  }
+
+  &__image {
+    @media screen and (min-width: 720px) {
+      margin-bottom:$space-lg;
+    }
+
+    @media screen and (max-width: 719px) {
+      margin-bottom:$space-md - $space-xs;
+    }
+
+    &-back-blurred {
+      position: absolute;
+      inset: 0;
+      filter: blur($space-xxl * 4);
+      //perfomance хром и другие на webkit
+      backface-visibility: hidden;
+      transform: translate3d(0,0,0);
+      transform: translateZ(0);
+    }
+  }
+
+  &__title{
+    color:$color-light;
+    font-weight: 500;
+  }
+
+  &__info {
+    padding-block: $space-xs $space-xs;
+
+    @media screen and (min-width: 720px) {
+      font-size: 0.8em;
+    }
+
+    @media screen and (max-width: 719px) {
+      font-size: 0.9em;
+    }
+  }
+
+  &__title, &__info, &__artist{
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  &__artist {
+    display: block;
+    padding-top: $space-xxs;
+
+    @media screen and (min-width: 720px) {
+      font-size: 0.9em;
+    }
+
+    @media screen and (max-width: 719px) {
+      font-size: 0.8em;
+    }
+  }
+}
