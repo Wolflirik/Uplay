@@ -6,6 +6,7 @@ import autoprefixer from 'autoprefixer'
 import svgLoader from 'vite-svg-loader'
 import { VitePWA } from 'vite-plugin-pwa'
 import ViteSvgSpriteWrapper from 'vite-svg-sprite-wrapper'
+import Unfonts from 'unplugin-fonts/vite'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
 export default defineConfig({
@@ -74,6 +75,24 @@ export default defineConfig({
                         form_factor: 'narrow',
                     },
                 ],
+            },
+        }),
+        Unfonts({
+            custom: {
+                display: 'swap',
+                preload: true,
+                injectTo: 'head-prepend',
+                families: {
+                    'Dancing Script': {
+                        src: './assets/font/manrope-*',
+                        transform(font) {
+                            const [name, weight] = font.basename.split('-')
+                            font.weight = weight
+
+                            return font
+                        },
+                    },
+                },
             },
         }),
         vue(),

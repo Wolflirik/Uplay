@@ -4,8 +4,8 @@
             <h1 class="hello__title">UPLAY</h1>
             <p class="hello__description">Если музыка твой выбор, пусть так будет, вне зависимости от платформы и скорости интернета!</p>
             <div class="hello__action-buttons">
-                <button-element type="accent" @click="uploadTracks">
-                    <icon-element :name="parseLoading ? 'loader' : 'plus'" :disabled="parseLoading" />
+                <button-element type="accent" @click="uploadTracks" :disabled="parseLoading">
+                    <icon-element :name="parseLoading ? 'loader' : 'plus'" :class="{ 'icon--animation_loading': parseLoading }" />
                     <span>Выбрать треки</span>
                 </button-element>
                 <button-element type="default" @click="installPWA" :hidden="!deferredPrompt">

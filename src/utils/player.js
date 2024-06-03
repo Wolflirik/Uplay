@@ -193,11 +193,8 @@ const startMediaSession = () => {
             ['seekto', !currentTrackId.value ? null : e => setCurrentTime(e.seekTime)],
         ]
 
-        console.log(isIOS.value, disablePrev.value, disableNext.value)
-
         for (const [action, handler] of actions) {
             try {
-                console.log(action, handler)
                 navigator.mediaSession.setActionHandler(action, handler)
             } catch (e) {
                 console.log(e)
