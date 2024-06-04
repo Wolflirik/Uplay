@@ -76,7 +76,7 @@ audio.onplay = () => {
 }
 
 audio.onerror = err => {
-    console.log(err)
+    console.log(err.currentTarget.error.code)
     pause()
 }
 
@@ -130,15 +130,11 @@ const loadAudio = async trackId => {
         try {
             const { arrayBuffer, file } = await getFile(currentTrackData.value.fileType, currentTrackData.value.fileHandle)
 
-            const blob = new Blob([arrayBuffer], {
-                type: file.type,
-            })
-
             samples.value = await visualize(arrayBuffer, +import.meta.env.PLAYER_DEFAULT_SAMPLES_LIMIT)
 
             action.updateTrackPlayCount(currentTrackId.value, currentTrackData.value.playCount)
 
-            return await blobToBase64(blob)
+            return await blobToBase64(file)
         } catch (e) {
             return Promise.reject(-1)
         }
@@ -150,7 +146,12 @@ const loadAudio = async trackId => {
 const getAudio = async id => {
     if (!audio.src || currentTrackId.value !== id) {
         try {
+            //fix broken src
+            audio.src = ''
+            audio.removeAttribute('src')
+
             audio.src = await loadAudio(id)
+
             return new Promise(resolve => {
                 audio.load()
 
@@ -251,7 +252,6 @@ export const play = id => {
                 })
         })
         .catch(e => {
-            console.log('played')
             switch (e) {
                 case -1:
                     break

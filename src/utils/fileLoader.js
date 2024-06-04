@@ -1,4 +1,4 @@
-import { IS_DEVICE_A_MOBILE, wait } from './utils'
+import { getFile, IS_DEVICE_A_MOBILE, wait } from './utils'
 
 const isNativeFileSystemSupported = 'showDirectoryPicker' in globalThis
 
@@ -26,12 +26,24 @@ export const getFilesFromLegacyInputEvent = (e, extensions) => {
         return []
     }
 
-    return Array.from(files)
-        .filter(file => extensions.some(ext => file.name.endsWith(`.${ext}`)))
-        .map(file => ({
-            type: 'file',
-            file,
-        }))
+    return Promise.all(
+        Array.from(files)
+            .filter(file => extensions.some(ext => file.name.endsWith(`.${ext}`)))
+            .map(async loadedFile => {
+                const { arrayBuffer, file } = await getFile('initFile', loadedFile)
+                return {
+                    loadType: 'file',
+                    type: file.type,
+                    name: file.name,
+                    size: file.size,
+                    byteArray: arrayBuffer,
+                    file: {
+                        type: file.type,
+                        byteArray: arrayBuffer,
+                    },
+                }
+            }),
+    )
 }
 
 export const getFilesFromDirectory = async extensions => {
@@ -40,7 +52,19 @@ export const getFilesFromDirectory = async extensions => {
             const directory = await window.showDirectoryPicker()
 
             const filesRefs = await getFileRefsRecursively(directory, extensions)
-            return filesRefs.map(ref => ({ type: 'fileRef', file: ref }))
+            return await Promise.all(
+                filesRefs.map(async ref => {
+                    const { arrayBuffer, file } = await getFile('fileRef', ref)
+                    return {
+                        loadType: 'fileRef',
+                        type: file.type,
+                        name: file.name,
+                        size: file.size,
+                        byteArray: arrayBuffer,
+                        file: ref,
+                    }
+                }),
+            )
         } catch {
             return null
         }

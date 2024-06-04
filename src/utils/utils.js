@@ -24,10 +24,10 @@ export const loadImageBlob = async link => {
     return fetch(link).then(response => response.blob())
 }
 
-export const getFile = async (type, fileHandler) => {
+export const getFile = async (loadType, fileHandler) => {
     let file = fileHandler
 
-    if (type === 'fileRef') {
+    if (loadType === 'fileRef') {
         let mode = await fileHandler.queryPermission({ mode: 'read' })
         if (mode !== 'granted') {
             try {
@@ -44,8 +44,8 @@ export const getFile = async (type, fileHandler) => {
         }
 
         file = await fileHandler.getFile()
-    } else if (fileHandler.hasOwnProperty('ab')) {
-        file = new Blob([fileHandler.ab], { type: fileHandler.type })
+    } else if (loadType === 'file') {
+        file = new Blob([fileHandler.byteArray], { type: fileHandler.type })
     }
 
     if (file.size > import.meta.env.PLAYER_ALLOWED_TRACK_SIZE) {

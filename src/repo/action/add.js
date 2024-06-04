@@ -78,7 +78,7 @@ export const addTrack = (albumTitle, image, name, duration, year, fileHandle, ar
             name: name,
             duration: duration,
             year: year,
-            fileType: fileHandle.type,
+            fileType: fileHandle.loadType,
             fileHandle: fileHandle.file,
         }).id
     }

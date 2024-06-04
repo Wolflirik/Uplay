@@ -9,17 +9,10 @@ export const parseMetadata = async files => {
     let parsedFiles = []
 
     for (let fileHandle of files) {
-        const { arrayBuffer, file } = await getFile(fileHandle.type, fileHandle.file)
-        const fileUint8 = new Uint8Array(arrayBuffer)
-        const tags = await parseBuffer(fileUint8, { mimeType: file.type, path: file.name, size: file.size }, { duration: true })
+        // const { arrayBuffer, file } = await getFile(fileHandle.type, fileHandle.file)
+        const fileUint8 = new Uint8Array(fileHandle.byteArray)
+        const tags = await parseBuffer(fileUint8, { mimeType: fileHandle.type, path: fileHandle.name, size: fileHandle.size }, { duration: true })
         let base64Image = null
-
-        if (fileHandle.type === 'file') {
-            fileHandle.file = {
-                ab: arrayBuffer,
-                type: file.type,
-            }
-        }
 
         if (tags.common.picture?.length) {
             const [image] = tags.common.picture
@@ -40,7 +33,7 @@ export const parseMetadata = async files => {
         }
 
         parsedFiles.push({
-            name: tags.common.title || file.name,
+            name: tags.common.title || fileHandle.name,
             albumTitle: tags.common?.album || null,
             artistList: artistList,
             genreList: genreList,
