@@ -50,7 +50,7 @@ const router = createRouter({
                 },
                 modules: {
                     header: {
-                        0: ['BackButtonModule', 'MenuButtonModule', 'PageTitleModule'],
+                        0: ['BackButtonModule', 'PageTitleModule', 'MenuButtonModule'],
                     },
                     sidebar: {
                         0: ['NavigationModule'],
@@ -74,7 +74,7 @@ const router = createRouter({
                 },
                 modules: {
                     header: {
-                        0: ['BackButtonModule', 'MenuButtonModule', 'PageTitleModule'],
+                        0: ['BackButtonModule', 'PageTitleModule', 'MenuButtonModule'],
                     },
                     sidebar: {
                         0: ['NavigationModule'],
@@ -98,7 +98,7 @@ const router = createRouter({
                 },
                 modules: {
                     header: {
-                        0: ['BackButtonModule', 'MenuButtonModule', 'PageTitleModule'],
+                        0: ['BackButtonModule', 'PageTitleModule', 'MenuButtonModule'],
                     },
                     sidebar: {
                         0: ['NavigationModule'],
@@ -122,7 +122,7 @@ const router = createRouter({
                 },
                 modules: {
                     header: {
-                        0: ['BackButtonModule', 'MenuButtonModule', 'PageTitleModule'],
+                        0: ['BackButtonModule', 'PageTitleModule', 'MenuButtonModule'],
                     },
                     sidebar: {
                         0: ['NavigationModule'],
@@ -149,7 +149,7 @@ const router = createRouter({
                 },
                 modules: {
                     header: {
-                        0: ['BackButtonModule', 'MenuButtonModule', 'PageTitleModule'],
+                        0: ['BackButtonModule', 'PageTitleModule', 'MenuButtonModule'],
                     },
                     sidebar: {
                         0: ['NavigationModule'],
@@ -173,7 +173,7 @@ const router = createRouter({
                 },
                 modules: {
                     header: {
-                        0: ['BackButtonModule', 'MenuButtonModule', 'PageTitleModule'],
+                        0: ['BackButtonModule', 'PageTitleModule', 'MenuButtonModule'],
                     },
                     sidebar: {
                         0: ['NavigationModule'],
@@ -200,7 +200,7 @@ const router = createRouter({
                 },
                 modules: {
                     header: {
-                        0: ['BackButtonModule', 'MenuButtonModule', 'PageTitleModule'],
+                        0: ['BackButtonModule', 'PageTitleModule', 'MenuButtonModule'],
                     },
                     sidebar: {
                         0: ['NavigationModule'],
@@ -224,7 +224,7 @@ const router = createRouter({
                 },
                 modules: {
                     header: {
-                        0: ['BackButtonModule', 'MenuButtonModule', 'PageTitleModule'],
+                        0: ['BackButtonModule', 'PageTitleModule', 'MenuButtonModule'],
                     },
                     sidebar: {
                         0: ['NavigationModule'],

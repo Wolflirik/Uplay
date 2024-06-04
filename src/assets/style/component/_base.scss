@@ -1,9 +1,11 @@
 html {
   overflow: hidden;
+  overscroll-behavior: none;
 }
 body {
   background-color: $color-dark-blue;
   color: $color-semi-light-blue;
   overflow: hidden;
   user-select:none;
+  overscroll-behavior: none;
 }

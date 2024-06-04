@@ -4,7 +4,7 @@ import { markRaw, reactive, ref, watchEffect } from 'vue'
 import module from '@module'
 import segment from '@segment'
 
-let loadedComponents = {
+const loadedComponents = {
     module,
     segment,
 }

@@ -1,11 +1,34 @@
 .page-title {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  inset: 0;
+  width: 100%;
   font-size: 1em;
   font-weight: 500;
   pointer-events: none;
   color: $color-light;
+  overflow: hidden;
+
+  &:before{
+    content: attr(data-new-title);
+    position: absolute;
+    inset:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-light;
+    background-color: $color-dark-blue;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  &--animation {
+    &_replace {
+      &:before {
+        content: attr(data-new-title);
+        clip-path: inset(0 0 0 0);
+        transition: clip-path 0.2s linear;
+      }
+    }
+  }
 }
