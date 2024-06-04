@@ -3,8 +3,6 @@
   z-index: 1000;
   inset:0;
   overflow: hidden;
-  padding-inline:$space-sm;
-  padding-bottom: env(safe-area-inset-bottom, 0);
   text-align: center;
   white-space: nowrap;
 
@@ -72,23 +70,32 @@
 
   &__inner {
     background-color: $color-semi-dark-blue;
-    border-radius: $space-xl;
     text-align: left;
     white-space: normal;
     overflow: hidden;
 
     @media screen and (min-width: 720px) {
+      border-radius: $space-xl;
       margin:$space-xxl * 4 0 $space-xl * 2 0;
     }
 
     @media screen and (max-width: 719px) {
-      margin:$space-xxl 0 $space-md 0;
+      border-radius: $space-xl $space-xl 0 0;
+      margin:$space-xxl 0 0 0;
     }
   }
 
   &__content {
     position: relative;
     padding:$space-sm $space-md + $space-sm $space-md + $space-sm $space-md + $space-sm;
+
+    @media screen and (min-width: 720px) {
+      padding:$space-sm $space-md + $space-sm $space-md + $space-sm $space-md + $space-sm;
+    }
+
+    @media screen and (max-width: 719px) {
+      padding:$space-sm $space-md calc($space-md + env(safe-area-inset-bottom, 0)) $space-md;
+    }
   }
 
   &--animation {

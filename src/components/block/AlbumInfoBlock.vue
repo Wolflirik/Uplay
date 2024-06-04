@@ -7,7 +7,7 @@
             </div>
             <div class="col col--12 col--md-7 col--lg-7 col--xl-8 col--xxl-9">
                 <div class="album-info__description">
-                    <h1 class="album-info__title">{{ title }}</h1>
+                    <h1 class="album-info__title" ref="titleElement">{{ title }}</h1>
                     <span class="album-info__description-item">
                         <span class="album-info__description-item-key">Колтчество треков: </span>
                         <span class="album-info__description-item-value">{{ trackCount }}</span>
