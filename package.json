@@ -23,6 +23,7 @@
         "vue": "^3.4.21",
         "vue-click-outside-element": "^3.1.2",
         "vue-router": "^4.3.0",
+        "vue3-touch-events": "^4.1.8",
         "zipson": "^0.2.12"
     },
     "devDependencies": {

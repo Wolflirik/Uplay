@@ -10,6 +10,7 @@ import localforage from 'localforage'
 import App from './App.vue'
 import router from './router'
 import vueClickOutsideElement from 'vue-click-outside-element'
+import Vue3TouchEvents from 'vue3-touch-events'
 
 const app = createApp(App)
 
@@ -45,6 +46,6 @@ const persistedState = createPersistedStatePlugin({
 })
 
 pinia.use(piniaOrm).use(persistedState)
-app.use(pinia).use(router).use(vueClickOutsideElement)
+app.use(pinia).use(router).use(vueClickOutsideElement).use(Vue3TouchEvents)
 
 app.mount('#app')

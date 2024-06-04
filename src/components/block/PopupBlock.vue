@@ -1,5 +1,5 @@
 <template>
-    <div class="popup">
+    <div class="popup" v-touch:swipe.bottom="() => $emit('closePopup')">
         <div class="popup__back" @click="() => $emit('closePopup')"></div>
         <div class="popup__main" v-click-outside-element="() => $emit('closePopup')">
             <div class="popup__inner">

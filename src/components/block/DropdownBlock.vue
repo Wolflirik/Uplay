@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown" :style="`--positioning: ${positioning};--position-abscissa:${positionAbscissa}px; --position-ordinate-inverted:${positionOrdinateInverted}px;`">
+    <div class="dropdown" :style="`--positioning: ${positioning};--position-abscissa:${positionAbscissa}px; --position-ordinate-inverted:${positionOrdinateInverted}px;`" v-touch:swipe.bottom="closeDropdown">
         <div class="dropdown__back" @click="closeDropdown"></div>
         <div class="dropdown__main" v-click-outside-element="closeDropdown">
             <div class="dropdown__inner">
