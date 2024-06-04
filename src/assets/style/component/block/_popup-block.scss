@@ -118,11 +118,11 @@
 
     &_leave {
       pointer-events: auto;
-      transition: fake .2s;
+      transition: fake .5s;
 
       .popup__main {
         backface-visibility: hidden;
-        transition: transform .2s linear, opacity .1s linear;
+        transition: transform .5s linear, opacity .1s linear;
       }
     }
 

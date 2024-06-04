@@ -127,13 +127,13 @@
       pointer-events: auto;
 
       @media screen and (max-width: 719px) {
-        transition: fake .2s;
+        transition: fake .5s;
       }
 
       .dropdown__main {
         @media screen and (max-width: 719px) {
           backface-visibility: hidden;
-          transition: transform .2s linear, opacity .1s linear;
+          transition: transform .5s linear, opacity .1s linear;
         }
       }
     }
