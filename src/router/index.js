@@ -1,4 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import MainContent from '@content/MainContent.vue'
+import AlbumListContent from '@content/AlbumListContent.vue'
+import AlbumInfoContent from '@content/AlbumInfoContent.vue'
+import ArtistListContent from '@content/ArtistListContent.vue'
+import ArtistInfoContent from '@content/ArtistInfoContent.vue'
+import PlaylistListContent from '@content/PlaylistListContent.vue'
+import PlaylistInfoContent from '@content/PlaylistInfoContent.vue'
+import GenreListContent from '@content/GenreListContent.vue'
+import GenreInfoContent from '@content/GenreInfoContent.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,7 +34,7 @@ const router = createRouter({
                     },
                 },
             },
-            component: () => import('@content/MainContent.vue'),
+            component: MainContent,
         },
         {
             path: '/albums',
@@ -49,7 +58,7 @@ const router = createRouter({
                     },
                 },
             },
-            component: () => import('@content/AlbumListContent.vue'),
+            component: AlbumListContent,
         },
         {
             path: '/albums/:albumId',
@@ -73,7 +82,7 @@ const router = createRouter({
                     },
                 },
             },
-            component: () => import('@content/AlbumInfoContent.vue'),
+            component: AlbumInfoContent,
         },
         {
             path: '/artists',
@@ -97,7 +106,7 @@ const router = createRouter({
                     },
                 },
             },
-            component: () => import('@content/ArtistListContent.vue'),
+            component: ArtistListContent,
         },
         {
             path: '/artists/:artistId',
@@ -124,12 +133,11 @@ const router = createRouter({
                     },
                 },
             },
-            component: () => import('@content/ArtistInfoContent.vue'),
+            component: ArtistInfoContent,
         },
         {
             path: '/playlists',
             name: 'playlist-list',
-            component: () => import('@content/PlaylistListContent.vue'),
             meta: {
                 layout: {
                     0: ['HeaderSegment:layout__header', 'SidebarSegment:layout__sidebar', 'ContentSegment:layout__content', 'PlayerSegment:layout__player'],
@@ -149,6 +157,7 @@ const router = createRouter({
                     },
                 },
             },
+            component: PlaylistListContent,
         },
         {
             path: '/playlists/:playlistId',
@@ -175,12 +184,11 @@ const router = createRouter({
                     },
                 },
             },
-            component: () => import('@content/PlaylistInfoContent.vue'),
+            component: PlaylistInfoContent,
         },
         {
             path: '/genres',
             name: 'genre-list',
-            component: () => import('@content/GenreListContent.vue'),
             meta: {
                 layout: {
                     0: ['HeaderSegment:layout__header', 'SidebarSegment:layout__sidebar', 'ContentSegment:layout__content', 'PlayerSegment:layout__player'],
@@ -200,6 +208,7 @@ const router = createRouter({
                     },
                 },
             },
+            component: GenreListContent,
         },
         {
             path: '/genres/:genreId',
@@ -226,7 +235,7 @@ const router = createRouter({
                     },
                 },
             },
-            component: () => import('@content/GenreInfoContent.vue'),
+            component: GenreInfoContent,
         },
     ],
 })

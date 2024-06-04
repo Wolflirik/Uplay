@@ -1,7 +1,13 @@
 import { useRoute } from 'vue-router'
 import { markRaw, reactive, ref, watchEffect } from 'vue'
 
-let loadedComponents = {}
+import module from '@module'
+import segment from '@segment'
+
+let loadedComponents = {
+    module,
+    segment,
+}
 
 const findSizeByInnerWidth = (sizesObject, innerWidth) => {
     let size = 0
@@ -22,24 +28,19 @@ const checkExistSizeData = (options = {}) => {
     return typeof sizesObject?.[size] !== 'undefined' ? sizesObject[size] : false
 }
 
-const loadComponent = async (dir, name) => {
-    try {
-        if (typeof loadedComponents[dir + name] === 'undefined') {
-            const tmpModule = await import(`../components/${dir}/${name}.vue`)
-            loadedComponents[dir + name] = markRaw(tmpModule?.default)
-        }
-
-        return loadedComponents[dir + name]
-    } catch (e) {
-        throw new Error('Component `' + `../components/${dir}/${name}.vue` + '` is not found!')
+const loadComponent = (type, name) => {
+    if (typeof loadedComponents[type][name] === 'undefined') {
+        throw new Error('Component `' + `${name}` + '` is not found!')
     }
+
+    return markRaw(loadedComponents[type][name])
 }
 
 export const getSegments = innerWidthRef => {
     const route = useRoute()
     const segments = reactive([])
 
-    watchEffect(async () => {
+    watchEffect(() => {
         const existedSegments = checkExistSizeData({ route: route, type: 'layout', innerWidthRef: innerWidthRef })
         let tmpSegments = []
 
@@ -49,7 +50,7 @@ export const getSegments = innerWidthRef => {
                     const [segmentName, segmentClass] = segment.split(':')
                     tmpSegments.push({
                         class: segmentClass,
-                        component: await loadComponent('segment', segmentName),
+                        component: loadComponent('segment', segmentName),
                     })
                 } catch (e) {
                     console.log(e)
@@ -68,14 +69,14 @@ export const getModules = (position, innerWidthRef) => {
     const route = useRoute()
     const modules = reactive([])
 
-    watchEffect(async () => {
+    watchEffect(() => {
         const existedModules = checkExistSizeData({ route: route, type: 'modules', position: position, innerWidthRef: innerWidthRef })
         let tmpModules = []
 
         if (existedModules) {
             for (let moduleName of existedModules) {
                 try {
-                    tmpModules.push(await loadComponent('module', moduleName))
+                    tmpModules.push(loadComponent('module', moduleName))
                 } catch (e) {
                     console.log(e)
                     continue
