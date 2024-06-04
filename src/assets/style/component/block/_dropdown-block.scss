@@ -133,7 +133,7 @@
       .dropdown__main {
         @media screen and (max-width: 719px) {
           backface-visibility: hidden;
-          transition: transform .5s linear, opacity .1s linear;
+          transition: transform .5s linear, opacity .15s linear;
         }
       }
     }

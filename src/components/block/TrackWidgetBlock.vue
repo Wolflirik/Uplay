@@ -1,5 +1,12 @@
 <template>
-    <div class="track-widget">
+    <div
+        class="track-widget"
+        v-touch:swipe.left="
+            () => {
+                trackMenuStatus = !trackMenuStatus
+            }
+        "
+    >
         <div class="track track-widget__info">
             <image-element class="track__image" :image-id="trackData.imageId" :alt="trackData.name" />
             <div class="track__control">
