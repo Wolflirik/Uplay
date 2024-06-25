@@ -1,6 +1,6 @@
 import { useKeys } from 'pinia-orm/helpers'
 import { defaults, repos } from '@repo'
-import { getArtistIdsByTrackIds, getGenreIdsByTrackIds, getPlaylistIdsByTrackIds } from '@repo/action/get'
+import { getArtistIdsByTrackIds, getGenreIdsByTrackIds, getPlaylistIdsByTrackIds } from '@repo/action/read'
 import { currentTrackId, pause, removeFromQueue, setCurrentTime, setDefaultSamples } from '@utils/player'
 
 export const removeAlbum = id => {

@@ -1,6 +1,6 @@
 import { blobToBase64, loadImageBlob } from '@utils/utils'
 import { repos, defaults } from '@repo'
-import { getSetting } from '@repo/action/get'
+import { getSetting } from '@repo/action/read'
 
 export const createStartSchema = async () => {
     defaults.favoritePlaylistId = addPlaylist({ name: import.meta.env.PLAYER_INITIAL_PLAYLIST_NAME, emoji: import.meta.env.PLAYER_INITIAL_PLAYLIST_EMOJI })
