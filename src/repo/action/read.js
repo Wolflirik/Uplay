@@ -1,16 +1,6 @@
 import { useKeys, useSum } from 'pinia-orm/helpers'
 import { repos, defaults } from '@repo'
 
-export const getSetting = key => {
-    const setting = repos.setting.where('key', key).first()
-
-    if (Object.is(setting, null)) {
-        return null
-    }
-
-    return setting.value
-}
-
 export const getImageById = id => {
     const image = repos.image.find(id) || {}
     let base64Image = ''

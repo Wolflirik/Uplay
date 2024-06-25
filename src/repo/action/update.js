@@ -1,5 +1,4 @@
-import { repos, defaults } from '@repo'
-import { getSetting } from '@repo/action/read'
+import { repos } from '@repo'
 
 export const updatePlaylist = (id, data) => {
     repos.playlist.where('id', id).update(data)

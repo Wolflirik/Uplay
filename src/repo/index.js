@@ -13,7 +13,6 @@ import Image from './model/image'
 import Track2artist from './model/track2artist'
 import Track2genre from './model/track2genre'
 import Track2playlist from './model/track2playlist'
-import Setting from './model/setting'
 
 export const repos = {
     playlist: useRepo(Playlist),
@@ -25,7 +24,6 @@ export const repos = {
     track2artist: useRepo(Track2artist),
     track2genre: useRepo(Track2genre),
     track2playlist: useRepo(Track2playlist),
-    setting: useRepo(Setting),
 }
 
 export let defaults = { defaultAlbumId: '', defaultArtistId: '', defaultGenreId: '', defaultImageId: '', favoritePlaylistId: '' }

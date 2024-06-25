@@ -16,19 +16,6 @@ export const bootRepo = async name => {
     await repos[name].piniaStore().$persistedState.isReady()
 }
 
-export const setSetting = (key, value) => {
-    if (!Object.is(getSetting(key), null)) {
-        repos.setting.where('key', key).update({
-            value: value,
-        })
-    } else {
-        repos.setting.insert({
-            key: key,
-            value: value,
-        })
-    }
-}
-
 export const addPlaylist = data => {
     let { id: playlistId } = repos.playlist.where('name', name => name.toLowerCase() === data.name.toLowerCase()).first() || { id: null }
 
