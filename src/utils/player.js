@@ -56,14 +56,18 @@ audio.onvolumechange = () => {
     }
 }
 
-audio.onended = () => {
-    if (repeatType.value === 1) {
-        setCurrentTime(0)
-        play(currentTrackId.value)
-    } else {
-        next()
-    }
-}
+audio.addEventListener(
+    'ended',
+    () => {
+        if (repeatType.value === 1) {
+            setCurrentTime(0)
+            play(currentTrackId.value)
+        } else {
+            next()
+        }
+    },
+    false,
+)
 
 audio.onpause = () => {
     playStatus.value = false
@@ -242,14 +246,9 @@ const shuffleQueue = queue => {
 export const play = id => {
     getAudio(id)
         .then(a => {
-            audio
-                .play()
-                .then(() => {
-                    startMediaSession()
-                })
-                .catch(() => {
-                    console.log(e)
-                })
+            audio.play().then(() => {
+                startMediaSession()
+            })
         })
         .catch(e => {
             switch (e) {

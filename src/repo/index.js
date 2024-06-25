@@ -1,7 +1,7 @@
 import { useRepo } from 'pinia-orm'
-import * as addActions from '@repo/action/add'
-import * as getActions from '@repo/action/get'
-import * as removeActions from '@repo/action/remove'
+import * as createActions from '@repo/action/create'
+import * as readActions from '@repo/action/read'
+import * as deleteActions from '@repo/action/delete'
 import * as updateActions from '@repo/action/update'
 
 import Playlist from './model/playlist'
@@ -31,8 +31,8 @@ export const repos = {
 export let defaults = { defaultAlbumId: '', defaultArtistId: '', defaultGenreId: '', defaultImageId: '', favoritePlaylistId: '' }
 
 export const action = {
-    ...addActions,
-    ...getActions,
-    ...removeActions,
+    ...createActions,
+    ...readActions,
+    ...deleteActions,
     ...updateActions,
 }
