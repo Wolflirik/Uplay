@@ -9,11 +9,16 @@
 </template>
 
 <script setup>
+import { inject } from '@vercel/analytics'
+import { injectSpeedInsights } from '@vercel/speed-insights'
 import { onMounted, onUnmounted, provide, ref } from 'vue'
 import { getLayoutName } from '@utils/componentLoader'
 import SegmentBlock from '@block/SegmentBlock.vue'
 import LoaderSegment from '@segment/LoaderSegment.vue'
 import SpriteBlock from '@block/SpriteBlock.vue'
+
+inject()
+injectSpeedInsights()
 
 const loadedStorage = ref(false)
 const vhUnit = ref(0)
