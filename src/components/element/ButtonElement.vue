@@ -1,5 +1,5 @@
 <template>
-    <button class="button" :class="[$attrs.class, `button--type_${type}`, loading ? 'button--status_loading' : 'button--status_stable']" :id="$attrs.id" @click="$emit('click', $event)" :disabled="$attrs.disabled || loading" :hidden="$attrs.hidden">
+    <button class="button" :class="[$attrs.class, `button--type_${type}`, loading ? 'button--status_loading' : 'button--status_stable']" :id="$attrs.id" @click="$emit('click', $event)" :disabled="$attrs.disabled || loading ? 'true' : 'false'" :hidden="$attrs.hidden ? 'true' : 'false'">
         <slot></slot>
     </button>
 </template>
